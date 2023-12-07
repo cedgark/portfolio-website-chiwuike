@@ -499,6 +499,7 @@ background-color: var(--body-color);
 }
 
 .home__description b {
+  font-size: var(--h3-font-size);
   background: linear-gradient(45deg,hsla(14,98%,50%,0.3),hsla(14,98%,50%,0));
 }
 
@@ -545,6 +546,149 @@ background-color: var(--body-color);
     transform: translateY(.6rem);
     opacity: 0;
   }
+}
+
+.skills-bar {
+position: relative;
+width: 100%;
+background-color: var(--body-color);
+transition: background-color .4s;
+/*box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+border-radius: 10px;*/
+padding: 15px 30px;
+margin-bottom: 2rem;
+}
+
+.skills-bar .bar {
+margin: 20px 0;
+transition: background-color .4s;
+}
+
+.skills-bar .bar:first-child {
+margin-top: 0px;
+}
+
+.skills-bar .bar .info {
+margin-bottom: 5px;
+}
+
+.skills-bar .bar .info span {
+font-size: var(--small-font-size);
+font-weight: var(--font-semi-bold);
+}
+
+.skills-bar .bar .progress-line {
+position: relative;
+height: 10px;
+width: 100%;
+background-color: var(--container-color);
+border-radius: 10px;
+transform: scaleX(0);
+transform-origin: left;
+box-shadow: inset 0px 1px 1px rgba(255, 0, 0, 0.05), 0px 1px rgba(255, 255, 255, 0.1);
+animation: skill-load 1s cubic-bezier(1,0,0.5,1) forwards;
+transition: background-color .4s;
+}
+
+.bar .progress-line span {
+  height: 100%;
+  width: 80%;
+  background: var(--first-color);
+  position: absolute;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: skill-load 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+}
+
+@keyframes skill-load {
+100% {
+  transform: scaleX(1);
+}
+}
+
+.progress-line.python span {
+  width: 90%;
+}
+
+.progress-line.java span {
+  width: 75%;
+}
+
+.progress-line.html span {
+  width: 80%;
+}
+
+.progress-line.css span {
+  width: 80%;
+}
+
+.progress-line.javascript span {
+  width: 90%;
+}
+
+.progress-line.mysql span {
+  width: 70%;
+}
+
+.bar .progress-line span::before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: -10px;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-top-color: #000;
+  opacity: 0;
+  animation: showText2 0.5s 1.5s linear forwards;
+}
+
+.bar .progress-line span::after {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  color: var(--white-color);
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-regular);
+  background: var(--black-color);
+  padding: 2px 8px;
+  padding-bottom: 2px;
+  border-radius: 3px;
+  opacity: 0;
+  animation: showText2 0.5s 1.5s linear forwards;
+}
+
+@keyframes showText2 {
+100% {
+  opacity: 1;
+}
+}
+
+.progress-line.python span::after {
+  content: 'Expert';
+}
+
+.progress-line.java span::after {
+  content: 'Proficient';
+}
+
+.progress-line.html span::after {
+  content: 'Proficient';
+}
+
+.progress-line.css span::after {
+  content: 'Proficient';
+}
+
+.progress-line.javascript span::after {
+  content: 'Expert';
+}
+
+.progress-line.mysql span::after {
+  content: 'Competent';
 }
 
 /*=============== BUTTON ===============*/
@@ -724,6 +868,10 @@ background-color: var(--body-color);
 
 .projects__content {
   margin-bottom: 1.25rem;
+}
+
+.projects__description {
+  text-align: justify;
 }
 
 .projects__subtitle {
@@ -1145,6 +1293,10 @@ background-color: var(--body-color);
 }
 
 @media screen and (min-width: 768px) {
+
+  .projects__container {
+    grid-template-columns: repeat(2, 350px);
+  }
 }
 /* For large devices */
 
@@ -1274,6 +1426,10 @@ background-color: var(--body-color);
     padding-left: 3rem;
   }
 
+  .home__description b {
+    font-size: var(--h2-font-size);
+  }
+
   .home__description::after {
     content: '';
     width: 32px;
@@ -1320,15 +1476,15 @@ background-color: var(--body-color);
   }
 
   .home__line {
-    left: -12rem;
-    bottom: -3rem;
+    left: -10rem;
+    bottom: -8rem;
     width: 80px;
     rotate: 30deg;
   }
 
   .home__arrow {
-    top: 4.5rem;
-    left: -8rem;
+    top: 1.5rem;
+    left: -7rem;
     rotate: 80deg;
     width: 80px;
   }
@@ -1341,6 +1497,10 @@ background-color: var(--body-color);
   .home__social-link {
     font-size: 1.5rem;
     padding: .5rem;
+  }
+
+  .skills-bar {
+  top: -3rem;
   }
 
   .about__container {
@@ -1430,6 +1590,24 @@ background-color: var(--body-color);
 
   .button__ghost i {
     font-size: 1.5rem;
+  }
+
+  .projects__container {
+    grid-template-columns: repeat(3, 352px);
+    padding-block: 3rem 1rem;
+    padding: 1.25rem 1.25rem 2.5rem;
+  }
+
+  .projects__image {
+    margin-bottom: 1rem;
+  }
+
+  .projects__content {
+    margin-bottom: 2rem;
+  }
+
+  .projects__button {
+    right: 1.25rem;
   }
 
   .contact__container {
